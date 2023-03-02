@@ -4,24 +4,24 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const playlists = await db.playlistStore.getUserPlaylists(loggedInUser._id);
+      const categories = await db.categoryStore.getUserCategories(loggedInUser._id);
       const viewData = {
         title: "Placemark Dashboard",
         user: loggedInUser,
-        playlists: playlists,
+        categories: categories,
       };
       return h.view("dashboard-view", viewData);
     },
   },
 
-  addPlaylist: {
+  addCategory: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
-      const newPlayList = {
+      const newCategory = {
         userid: loggedInUser._id,
         title: request.payload.title,
       };
-      await db.playlistStore.addPlaylist(newPlayList);
+      await db.categoryStore.addCategory(newCategory);
       return h.redirect("/dashboard");
     },
   },

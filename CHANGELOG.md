@@ -4,10 +4,10 @@
 
 - about controller + view added
 - introduce track model
-- playlist controller + view & partials added
-- support adding trackApi to playlists
+- catergory controller + view & partials added
+- support adding trackApi to categories
 - introduce sessions
-- associate playlists with userApi
+- associate categories with userApi
 
 ## version 0.1.0
 
@@ -23,6 +23,6 @@
 - add eslint + prettier config
 -
 - vision and inert hapi components
-- simple in-memory playlist and user models
+- simple in-memory category and user models
 - account controller + views & partials
-- playlist controller + views & partials
+- category controller + views & partials

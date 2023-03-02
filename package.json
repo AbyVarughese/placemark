@@ -1,7 +1,7 @@
 {
   "name": "placemark",
   "version": "0.2.0",
-  "description": "A Playlist application for the HDip in Computing, WIT",
+  "description": "A Placemark application for the HDip in Computing, WIT",
   "main": "src/server.js",
   "type": "module",
   "scripts": {

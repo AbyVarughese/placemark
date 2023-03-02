@@ -7,23 +7,23 @@ export const trackMemStore = {
     return tracks;
   },
 
-  async addTrack(playlistId, track) {
+  async addTrack(categoryId, track) {
     track._id = v4();
-    track.playlistid = playlistId;
+    track.categoryid = categoryId;
     tracks.push(track);
     return track;
   },
 
-  async getTracksByPlaylistId(id) {
-    return tracks.filter((track) => track.playlistid === id);
+  async getTracksByCategoryId(id) {
+    return tracks.filter((track) => track.categoryid === id);
   },
 
   async getTrackById(id) {
     return tracks.find((track) => track._id === id);
   },
 
-  async getPlaylistTracks(playlistId) {
-    return tracks.filter((track) => track.playlistid === playlistId);
+  async getCategoryTracks(categoryId) {
+    return tracks.filter((track) => track.categoryid === categoryId);
   },
 
   async deleteTrack(id) {
