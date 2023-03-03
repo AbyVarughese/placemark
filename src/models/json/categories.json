@@ -1,0 +1,19 @@
+{
+  "categories": [
+    {
+      "userid": "883bf2c7-a301-4126-9dbe-5d8dace0dde2",
+      "title": "Rivers",
+      "_id": "da614dae-4c25-4c8e-8d35-28ffcbebbea6"
+    },
+    {
+      "userid": "3a0c873d-6ca1-4d61-a65c-684ea9558ad7",
+      "title": "Museums",
+      "_id": "665804ec-624b-4d91-acd4-f2037141adcd"
+    },
+    {
+      "userid": "3a0c873d-6ca1-4d61-a65c-684ea9558ad7",
+      "title": "miro",
+      "_id": "c6d282dc-38f7-4697-991b-5b6669e05024"
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 # Placemark Changelog
 
+## version 0.3.0
+
+- support delete catergory + tracks
+- introduce .env for secrets
+- include Joi schema validation for signup form
+- incorporate JSON data stores
 ## version 0.2.0
 
 - about controller + view added
