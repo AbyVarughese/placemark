@@ -18,8 +18,8 @@ export const categoryController = {
       payload: TrackSpec,
       options: { abortEarly: false },
       failAction: async function (request, h, error) {
-        const currentCategory = await db.categoryStore.getCategoryById(request.params.id);
-        return h.view("category-view", { title: "Add place error", category:currentCategory, errors: error.details }).takeover().code(400);
+       // const currentCategory = await db.categoryStore.getCategoryById(request.params.id);
+        return h.view("category-view", { title: "Add place error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {

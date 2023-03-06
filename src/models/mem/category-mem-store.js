@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 import { trackMemStore } from "./track-mem-store.js";
-import {categoryController} from "../../controllers/category-controller.js";
+// import {categoryController} from "../../controllers/category-controller.js";
 
 let categories = [];
 
@@ -17,8 +17,11 @@ export const categoryMemStore = {
 
   async getCategoryById(id) {
     const list = categories.find((category) => category._id === id);
-    list.tracks = await trackMemStore.getTracksByCategoryId(list._id);
-    return list;
+    if (list) {
+      list.tracks = await trackMemStore.getTracksByCategoryId(list._id);
+      return list;
+    }
+    return null;
   },
 
   async getUserCategories(userid) {
@@ -27,7 +30,7 @@ export const categoryMemStore = {
 
   async deleteCategoryById(id) {
     const index = categories.findIndex((category) => category._id === id);
-    categories.splice(index, 1);
+    if (index !== -1) categories.splice(index, 1);
   },
 
   async deleteAllCategories() {
