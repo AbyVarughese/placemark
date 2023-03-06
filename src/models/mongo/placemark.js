@@ -2,7 +2,7 @@ import Mongoose from "mongoose";
 
 const { Schema } = Mongoose;
 
-const trackSchema = new Schema({
+const placemarkSchema = new Schema({
     title: String,
     location: String,
     analytics: Number,
@@ -13,4 +13,4 @@ const trackSchema = new Schema({
     },
 });
 
-export const Track = Mongoose.model("Track", trackSchema);
+export const Placemark = Mongoose.model("Placemark", placemarkSchema);

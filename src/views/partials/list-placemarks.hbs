@@ -1,14 +1,14 @@
 <table class="table is-fullwidth">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Placemark</th>
       <th>Location</th>
       <th>Analytics</th>
       <th>Description</th>
     </tr>
   </thead>
   <tbody>
-    {{#each category.tracks}}
+    {{#each category.placemarks}}
     <tr>
       <td>
         {{title}}
@@ -23,7 +23,7 @@
        {{description}}
       </td>
       <td>
-         <a href="/category/{{../category._id}}/deletetrack/{{_id}}" class="ui icon button">
+         <a href="/category/{{../category._id}}/deleteplacemark/{{_id}}" class="ui icon button">
            <i class="fas fa-trash"></i>
             </a>
       </td>

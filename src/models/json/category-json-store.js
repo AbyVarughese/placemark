@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
-import { trackJsonStore } from "./track-json-store.js";
+import { placemarkJsonStore } from "./placemark-json-store.js";
 
 const db = new Low(new JSONFile("./src/models/json/categories.json"));
 db.data = { categories: [] };
@@ -24,7 +24,7 @@ export const categoryJsonStore = {
         await db.read();
         let list = db.data.categories.find((category) => category._id === id);
         if (list) {
-            list.tracks = await trackJsonStore.getTracksByCategoryId(list._id);
+            list.placemarks = await placemarkJsonStore.getPlacemarksByCategoryId(list._id);
         } else {
             list = null;
         }

@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { trackMemStore } from "./track-mem-store.js";
+import { placemarkMemStore } from "./placemark-mem-store.js";
 // import {categoryController} from "../../controllers/category-controller.js";
 
 let categories = [];
@@ -18,7 +18,7 @@ export const categoryMemStore = {
   async getCategoryById(id) {
     const list = categories.find((category) => category._id === id);
     if (list) {
-      list.tracks = await trackMemStore.getTracksByCategoryId(list._id);
+      list.placemarks = await placemarkMemStore.getPlacemarksByCategoryId(list._id);
       return list;
     }
     return null;

@@ -1,4 +1,4 @@
-import { TrackSpec } from "../models/joi-schemas.js";
+import { PlacemarkSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 
 export const categoryController = {
@@ -13,9 +13,9 @@ export const categoryController = {
     },
   },
 
-  addTrack: {
+  addPlacemark: {
     validate: {
-      payload: TrackSpec,
+      payload: PlacemarkSpec,
       options: { abortEarly: false },
       failAction: async function (request, h, error) {
        // const currentCategory = await db.categoryStore.getCategoryById(request.params.id);
@@ -24,20 +24,20 @@ export const categoryController = {
     },
     handler: async function (request, h) {
       const category = await db.categoryStore.getCategoryById(request.params.id);
-      const newTrack = {
+      const newPlacemark = {
         title: request.payload.title,
         location: request.payload.location,
         analytics: Number(request.payload.analytics),
         description: request.payload.description,
       };
-      await db.trackStore.addTrack(category._id, newTrack);
+      await db.placemarkStore.addPlacemark(category._id, newPlacemark);
       return h.redirect(`/category/${category._id}`);
     },
   },
-  deleteTrack: {
+  deletePlacemark: {
     handler: async function(request, h) {
       const category = await db.categoryStore.getCategoryById(request.params.id);
-      await db.trackStore.deleteTrack(request.params.trackid);
+      await db.placemarkStore.deletePlacemark(request.params.placemarkid);
       return h.redirect(`/category/${category._id}`);
     },
   },

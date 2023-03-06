@@ -17,10 +17,10 @@ export const webRoutes = [
   { method: "POST", path: "/dashboard/addcategory", config: dashboardController.addCategory },
 
   { method: "GET", path: "/category/{id}", config: categoryController.index },
-  { method: "POST", path: "/category/{id}/addtrack", config: categoryController.addTrack },
+  { method: "POST", path: "/category/{id}/addplacemark", config: categoryController.addPlacemark },
 
   { method: "GET", path: "/dashboard/deletecategory/{id}", config: dashboardController.deleteCategory },
-  { method: "GET", path: "/category/{id}/deletetrack/{trackid}", config: categoryController.deleteTrack },
+  { method: "GET", path: "/category/{id}/deleteplacemark/{placemarkid}", config: categoryController.deletePlacemark },
 
 
 ];

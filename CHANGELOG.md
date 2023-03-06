@@ -2,16 +2,16 @@
 
 ## version 0.3.0
 
-- support delete catergory + tracks
+- support delete catergory + placemarks
 - introduce .env for secrets
 - include Joi schema validation for signup form
 - incorporate JSON data stores
 ## version 0.2.0
 
 - about controller + view added
-- introduce track model
+- introduce placemark model
 - catergory controller + view & partials added
-- support adding trackApi to categories
+- support adding placemarkApi to categories
 - introduce sessions
 - associate categories with userApi
 
