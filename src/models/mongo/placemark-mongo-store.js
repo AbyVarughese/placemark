@@ -3,14 +3,28 @@ import {v4} from "uuid";
 import {Category} from "./category.js";
 
 export const placemarkMongoStore = {
-    async getPlacemarksByCategoryId(id) {
-        const placemarks = await Placemark.find({ categoryid: id }).lean();
+    async getAllPlacemarks() {
+        const placemarks = await Placemark.find().lean();
         return placemarks;
     },
     async addPlacemark(categoryId, placemark) {
         placemark.categoryid = categoryId;
         const newPlacemark = new Placemark(placemark);
         const placemarkObj = await newPlacemark.save();
+        return this.getPlacemarkById(placemarkObj._id);
+    },
+
+    async getPlacemarksByCategoryId(id) {
+        const placemarks = await Placemark.find({ categoryid: id }).lean();
+        return placemarks;
+    },
+
+    async getPlacemarkById(id) {
+        if (id) {
+            const placemark = await Placemark.findOne({ _id: id }).lean();
+            return placemark;
+        }
+        return null;
     },
 
     async deletePlacemark(id) {
@@ -19,6 +33,17 @@ export const placemarkMongoStore = {
         } catch (error) {
             console.log("bad id");
         }
+    },
+    async deleteAllPlacemarks() {
+        await Placemark.deleteMany({});
+    },
+
+    async updatePlacemark(placemark, updatedPlacemark) {
+        placemark.title = updatedPlacemark.title;
+        placemark.location = updatedPlacemark.location;
+        placemark.analytics = updatedPlacemark.analytics;
+        placemark.description = updatedPlacemark.description;
+        await placemark.save();
     },
 };
 

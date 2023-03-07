@@ -2,6 +2,7 @@ import { aboutController } from "./controllers/about-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { categoryController } from "./controllers/category-controller.js";
+import { placemarkController } from "./controllers/placemark-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -15,12 +16,12 @@ export const webRoutes = [
 
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addcategory", config: dashboardController.addCategory },
+  { method: "GET", path: "/dashboard/deletecategory/{id}", config: dashboardController.deleteCategory },
 
   { method: "GET", path: "/category/{id}", config: categoryController.index },
   { method: "POST", path: "/category/{id}/addplacemark", config: categoryController.addPlacemark },
-
-  { method: "GET", path: "/dashboard/deletecategory/{id}", config: dashboardController.deleteCategory },
   { method: "GET", path: "/category/{id}/deleteplacemark/{placemarkid}", config: categoryController.deletePlacemark },
 
-
+  { method: "GET", path: "/placemark/{id}/editplacemark/{placemarkid}", config: placemarkController.index },
+  { method: "POST", path: "/placemark/{id}/updateplacemark/{placemarkid}", config: placemarkController.update },
 ];
