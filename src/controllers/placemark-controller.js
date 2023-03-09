@@ -25,6 +25,8 @@ export const placemarkController = {
         },
         handler: async function (request, h) {
             const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
+           // console.log("good id");
+           // console.log(placemark);
             const newPlacemark = {
                 title: request.payload.title,
                 location: request.payload.location,

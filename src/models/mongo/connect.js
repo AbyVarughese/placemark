@@ -6,7 +6,6 @@ export function connectMongo() {
 
     Mongoose.set("strictQuery", true);
     Mongoose.connect(process.env.db);
-
     const db = Mongoose.connection;
 
     db.on("error", (err) => {
