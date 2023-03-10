@@ -68,6 +68,35 @@ export const accountsController = {
     },
   },
 
+  credentials: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const account = await db.userStore.getUserById(loggedInUser._id);
+      const viewData = {
+        title: "Account",
+        account: account
+      };
+      return h.view("credentials-view", viewData) ;
+    },
+  },
+
+  update: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      const account = await db.userStore.getUserById(loggedInUser._id);
+      // console.log("good id");
+      // console.log(placemark);
+      const newUser = {
+        firstName: request.payload.firstName,
+        lastName: request.payload.lastName,
+        //email: request.payload.email,
+        password: request.payload.password,
+      };
+      await db.userStore.updateUser(loggedInUser, newUser);
+      return h.redirect(`/credentials`);
+    },
+  },
+
   async validate(request, session) {
     const user = await db.userStore.getUserById(session.id);
     if (!user) {
@@ -75,4 +104,5 @@ export const accountsController = {
     }
     return { isValid: true, credentials: user };
   },
+
 };

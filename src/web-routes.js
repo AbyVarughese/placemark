@@ -13,6 +13,8 @@ export const webRoutes = [
   { method: "POST", path: "/authenticate", config: accountsController.login },
 
   { method: "GET", path: "/about", config: aboutController.index },
+  { method: "GET", path: "/credentials", config: accountsController.credentials },
+  { method: "POST", path: "/update", config: accountsController.update },
 
   { method: "GET", path: "/dashboard", config: dashboardController.index },
   { method: "POST", path: "/dashboard/addcategory", config: dashboardController.addCategory },
@@ -28,4 +30,6 @@ export const webRoutes = [
   { method: "POST", path: "/category/{id}/uploadimage", config: categoryController.uploadImage },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } },
+
+
 ];
