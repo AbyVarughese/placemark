@@ -28,6 +28,7 @@ export const PlacemarkSpec = Joi.object()
         analytics: Joi.number().allow("").optional().example(12),
         description: Joi.string().required().example("Good place"),
         categoryid: IdSpec,
+        image: Joi.any().allow("", null).optional().example("https://server.com/image.jpg"),
     })
     .label("Placemark");
 

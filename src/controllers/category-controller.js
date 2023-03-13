@@ -25,14 +25,31 @@ export const categoryController = {
     },
     handler: async function (request, h) {
       const category = await db.categoryStore.getCategoryById(request.params.id);
+
       const newPlacemark = {
         title: request.payload.title,
         location: request.payload.location,
         analytics: Number(request.payload.analytics),
         description: request.payload.description,
+       };
+
+    //  console.log ("step1");
+      const file = request.payload.image;
+      if (Object.keys(file).length > 0) {
+        const url = await imageStore.uploadImage(request.payload.image);
+        console.log ("url");
+        console.log (url);
+        newPlacemark.image = url;
       };
+    //  console.log (newPlacemark);
       await db.placemarkStore.addPlacemark(category._id, newPlacemark);
       return h.redirect(`/category/${category._id}`);
+    },
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true,
     },
   },
   deletePlacemark: {
@@ -42,6 +59,7 @@ export const categoryController = {
       return h.redirect(`/category/${category._id}`);
     },
   },
+
   uploadImage: {
     handler: async function (request, h) {
       try {
