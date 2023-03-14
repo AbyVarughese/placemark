@@ -35,6 +35,8 @@ export const rivers = {
 export const mountains = {
     "title": "Comeragh",
     "location": "Waterford",
+    "latitude": "53.4567",
+    "longitude": "-3.6534",
     "analytics": 15
 };
 
@@ -59,17 +61,10 @@ export const testPlacemarks = [
     {
         "title": "Dunmore East",
         "location": "Waterford",
+        "latitude": "53.4567",
+        "longitude": "-3.6534",
         "analytics": 5
-    },
-    {
-        "title": "Ferry Bank",
-        "artist": "Waterford",
-        "duration": 6
-    },
-    {
-        "title": "Cleaboy",
-        "artist": "Waterford",
-        "duration": 4
     }
+
 ];
 

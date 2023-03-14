@@ -25,6 +25,8 @@ export const PlacemarkSpec = Joi.object()
     .keys({
         title: Joi.string().required().example("suir"),
         location: Joi.string().required().example("Waterford"),
+        latitude: Joi.number().allow("").optional().example(53.45367),
+        longitude: Joi.number().allow("").optional().example(-4.3245),
         analytics: Joi.number().allow("").optional().example(12),
         description: Joi.string().required().example("Good place"),
         categoryid: IdSpec,

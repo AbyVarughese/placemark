@@ -29,16 +29,19 @@ export const categoryController = {
       const newPlacemark = {
         title: request.payload.title,
         location: request.payload.location,
+        latitude: request.payload.latitude,
+        longitude: request.payload.longitude,
         analytics: Number(request.payload.analytics),
         description: request.payload.description,
+
        };
 
     //  console.log ("step1");
       const file = request.payload.image;
       if (Object.keys(file).length > 0) {
         const url = await imageStore.uploadImage(request.payload.image);
-        console.log ("url");
-        console.log (url);
+      //  console.log ("url");
+     //   console.log (url);
         newPlacemark.image = url;
       };
     //  console.log (newPlacemark);

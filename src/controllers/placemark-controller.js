@@ -31,6 +31,8 @@ export const placemarkController = {
             const newPlacemark = {
                 title: request.payload.title,
                 location: request.payload.location,
+                latitude: request.payload.latitude,
+                longitude: request.payload.longitude,
                 analytics: Number(request.payload.analytics),
                 description: request.payload.description,
             };
