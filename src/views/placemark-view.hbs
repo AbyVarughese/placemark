@@ -1,30 +1,61 @@
 {{> menu}}
 
-<form class="box"  action="/placemark/{{category._id}}/updateplacemark/{{placemark._id}}" method="POST">
+<form class="box"  action="/placemark/{{category._id}}/updateplacemark/{{placemark._id}}" method="POST" enctype="multipart/form-data">
 
-    <label>Update Placemark Details:</label>
+    <p><b>Update Placemark Details:</b></p> </br>
 
     <div class="field is-horizontal">
         <div class="field-body">
             <div class="field">
+                <label for="title"><b>Title</b></label>
                 <input class="input" type="text"  name="title" value="{{placemark.title}}">
             </div>
             <div class="field">
+                <label for="location"><b>Location</b></label>
                 <input class="input" type="text" name="location" value="{{placemark.location}}">
             </div>
             <div class="field">
+                <label for="latitude"><b>Latitude</b></label>
                 <input class="input" type="text" name="latitude" value="{{placemark.latitude}}">
             </div>
             <div class="field">
+                <label for="longitude"><b>Longitude</b></label>
                 <input class="input" type="text" name="longitude" value="{{placemark.longitude}}">
             </div>
             <div class="field">
+                <label for="analytics"><b>Analytics</b></label>
                 <input class="input" type="text"  name="analytics" value="{{placemark.analytics}}">
             </div>
             <div class="field">
+                <label for="description"><b>Description</b></label>
                 <input class="input" type="text"  name="description" value="{{placemark.description}}">
             </div>
-        </div>
+
+            <div>
+                <td>
+                    <figure class="image is-128x128">
+                        <img src={{placemark.image}}>
+                    </figure>
+                </td>
+
+            </div>
+
+      </div>
     </div>
+
+    <div id="file-select" class="file has-name is-fullwidth">
+        <label class="file-label"> <input class="file-input" name="image" type="file"  accept="image/png, image/jpeg">
+            <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+            <span class="file-name"></span>
+        </label>
+    </div>
+
     <button class="button is-primary">Update Placemark</button>
 </form>

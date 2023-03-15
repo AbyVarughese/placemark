@@ -1,5 +1,6 @@
 import { PlacemarkSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { imageStore } from "../models/image-store.js";
 
 export const placemarkController = {
     index: {
@@ -36,8 +37,21 @@ export const placemarkController = {
                 analytics: Number(request.payload.analytics),
                 description: request.payload.description,
             };
+
+            const file = request.payload.image;
+            if (Object.keys(file).length > 0) {
+                const url = await imageStore.uploadImage(request.payload.image);
+                newPlacemark.image = url;
+            };
+
             await db.placemarkStore.updatePlacemark(placemark, newPlacemark);
             return h.redirect(`/category/${request.params.id}`);
+        },
+        payload: {
+            multipart: true,
+            output: "data",
+            maxBytes: 209715200,
+            parse: true,
         },
     },
 };

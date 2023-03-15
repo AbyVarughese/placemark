@@ -6,9 +6,21 @@ export const categoryController = {
   index: {
     handler: async function (request, h) {
       const category = await db.categoryStore.getCategoryById(request.params.id);
+      const placemarks = category.placemarks;
+      let markers = "";
+      for (let i = 0; i < placemarks.length; i++) {
+        markers += "L.marker(["+placemarks[i].latitude.toString()+", "+placemarks[i].longitude.toString()+"]).addTo(map);\r\n";
+      }
+      let mapview = null;
+      if (placemarks.length > 0) {
+        mapview = ".setView(["+placemarks[0].latitude.toString()+", "+placemarks[0].longitude.toString()+"], 6.4)";
+      }
+
       const viewData = {
         title: "Category",
         category: category,
+        markers: markers,
+        mapview: mapview,
       };
       return h.view("category-view", viewData);
     },
