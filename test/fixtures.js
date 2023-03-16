@@ -6,6 +6,10 @@ export const maggie = {
     email: "maggie@simpson.com",
     password: "secret",
 };
+export const maggieCredentials = {
+    email: "maggie@simpson.com",
+    password: "secret",
+};
 
 export const testUsers = [
     {
@@ -28,21 +32,28 @@ export const testUsers = [
     },
 ];
 
-export const rivers = {
-    title: "Beautiful Rivers"
+export const bog= {
+
+    "title": "Fenner",
+    /*
+    "location": "Waterford",
+    "latitude": "53.4567",
+    "longitude": "-3.6534",
+    "analytics": 15
+    */
+
 };
 
-export const mountains = {
-    "title": "Comeragh",
+export const fenner= {
+    "title": "Fenner",
     "location": "Waterford",
     "latitude": "53.4567",
     "longitude": "-3.6534",
     "analytics": 15
 };
 
-
-export const bog = {
-    title: "Best Bogs"
+export const valley = {
+    title: "Best valley"
 };
 
 export const testCategories = [
@@ -63,7 +74,14 @@ export const testPlacemarks = [
         "location": "Waterford",
         "latitude": "53.4567",
         "longitude": "-3.6534",
-        "analytics": 5
+        "analytics": 55
+    },
+    {
+        "title": "Tramore  ",
+        "location": "Waterford",
+        "latitude": "54.e567",
+        "longitude": "-5.6534",
+        "analytics": 66
     }
 
 ];

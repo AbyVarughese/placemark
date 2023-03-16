@@ -4,7 +4,6 @@ export function assertSubset(subset, superset) {
     if (superset instanceof Date || subset instanceof Date) return superset.valueOf() === subset.valueOf();
 
     return Object.keys(subset).every((key) => {
-        // eslint-disable-next-line no-prototype-builtins
         if (!superset.propertyIsEnumerable(key)) return false;
         const subsetItem = subset[key];
         const supersetItem = superset[key];

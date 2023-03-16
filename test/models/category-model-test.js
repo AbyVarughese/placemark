@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import { testCategories, mountain } from "../fixtures.js";
+import { testCategories, bog } from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Category Model tests", () => {
@@ -9,14 +9,13 @@ suite("Category Model tests", () => {
         db.init("mongo");
         await db.categoryStore.deleteAllCategories();
         for (let i = 0; i < testCategories.length; i += 1) {
-            // eslint-disable-next-line no-await-in-loop
-            testCategories[i] = await db.categoryStore.addCategory(testCategories[i]);
+         testCategories[i] = await db.categoryStore.addCategory(testCategories[i]);
         }
     });
 
     test("create a category", async () => {
-        const category = await db.categoryStore.addCategory(mountain);
-        assertSubset(mountain, category);
+        const category = await db.categoryStore.addCategory(bog);
+        assertSubset(bog, category);
         assert.isDefined(category._id);
     });
 
@@ -29,9 +28,9 @@ suite("Category Model tests", () => {
     });
 
     test("get a category - success", async () => {
-        const category = await db.categoryStore.addCategory(mountain);
+        const category = await db.categoryStore.addCategory(bog);
         const returnedCategory = await db.categoryStore.getCategoryById(category._id);
-        assertSubset(mountain, category);
+        assertSubset(bog, category);
     });
 
     test("delete One Category - success", async () => {
