@@ -50,6 +50,7 @@ export const placemarkMongoStore = {
         await upd.save();
     },
      */
+    //  if(image) { new.image = image }
 
     async updatePlacemark(placemark, updatedPlacemark) {
         const placemarkDoc = await Placemark.findOne({ _id: placemark._id });
@@ -59,7 +60,7 @@ export const placemarkMongoStore = {
         placemarkDoc.longitude = updatedPlacemark.longitude;
         placemarkDoc.analytics = updatedPlacemark.analytics;
         placemarkDoc.description = updatedPlacemark.description;
-        placemarkDoc.image = updatedPlacemark.image;
+        if(updatedPlacemark.image)  {placemarkDoc.image = updatedPlacemark.image;}
         await placemarkDoc.save();
     },
 };

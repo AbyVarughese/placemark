@@ -1,5 +1,28 @@
 # Placemark Changelog
 
+## version 0.7.0
+
+- map with latitude and longitude
+
+
+
+## version 0.6.0
+
+- support latitude and longitude
+-  update image
+
+
+## version 0.5.0
+
+- support edit placemark 
+- support upload image
+- Support Account details updating
+
+## version 0.4.0
+
+- JWT Stratergy
+- incorporate Mongo data stores
+
 ## version 0.3.0
 
 - support delete catergory + placemarks
