@@ -1,8 +1,6 @@
 /* eslint-disable func-names */
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
-import bcrypt from "bcrypt";          // ADDED
-const saltRounds = 10;                // ADDED
 
 export const accountsController = {
   index: {
@@ -34,7 +32,6 @@ export const accountsController = {
     },
     handler: async function (request, h) {
       const user = request.payload;
-      user.password = await bcrypt.hash(user.password, saltRounds);    // ADDED
       await db.userStore.addUser(user);
       return h.redirect("/");
     },
@@ -57,9 +54,7 @@ export const accountsController = {
     handler: async function (request, h) {
       const { email, password } = request.payload;
       const user = await db.userStore.getUserByEmail(email);
-      const passwordsMatch = await bcrypt.compare(password, user.password);    // ADDED
-      if (!user || !passwordsMatch) {                                          // ADDED
-     // if (!user || user.password !== password) {   // orginal
+      if (!user || user.password !== password) {
         return h.redirect("/");
       }
       request.cookieAuth.set({ id: user._id });

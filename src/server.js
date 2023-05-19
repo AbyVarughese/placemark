@@ -14,7 +14,6 @@ import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { validate } from "./api/jwt-utils.js";
 import { apiRoutes } from "./api-routes.js";
-import { readFileSync } from 'node:fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,22 +34,12 @@ const swaggerOptions = {
 };
 
 async function init() {
+  //const server = Hapi.server({
+  //  port: 3000,
+   // host: "localhost",
   const server = Hapi.server({
-    port: 3000,
-    host: "localhost",
-/*     const server = Hapi.server({
-      port: process.env.PORT || 3000,
-     }); */
-
-//const fs = require('fs');
-
-/* const server = Hapi.server({
-  port: process.env.PORT || 3443,
-  tls: {
-        key: readFileSync('src/keys/private/webserver.key'),
-        cert: readFileSync('src/keys/webserver.crt')
-  } */
-});
+    port: process.env.PORT || 3000,
+  });
 
   await server.register(Inert);
   await server.register(Vision);
