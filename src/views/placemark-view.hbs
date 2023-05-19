@@ -7,6 +7,10 @@
     <div class="field is-horizontal">
         <div class="field-body">
             <div class="field">
+                <label for="title"><b>Public</b></label>
+                <input class="checkbox" type="checkbox" name="pub" value="true" {{#if placemark.pub}}checked{{/if}}>
+            </div>
+            <div class="field">
                 <label for="title"><b>Title</b></label>
                 <input class="input" type="text"  name="title" value="{{placemark.title}}">
             </div>
@@ -28,8 +32,7 @@
             </div>
             <div class="field">
                 <label for="description"><b>Description</b></label>
-                <textarea   class="textarea"    name="description" > {{placemark.description}}"
-                </textarea>
+                <textarea class="textarea" name="description">{{placemark.description}}</textarea>
                     </div>
 
             <div>

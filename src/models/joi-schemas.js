@@ -29,6 +29,7 @@ export const PlacemarkSpec = Joi.object()
         longitude: Joi.number().allow("").optional().example(-4.3245),
         analytics: Joi.number().allow("").optional().example(12),
         description: Joi.string().required().example("Good place"),
+        pub: Joi.boolean(),
         categoryid: IdSpec,
         image: Joi.any().allow("", null).optional().example("https://server.com/image.jpg"),
     })

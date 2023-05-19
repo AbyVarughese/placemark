@@ -36,6 +36,7 @@ export const placemarkController = {
                 longitude: request.payload.longitude,
                 analytics: Number(request.payload.analytics),
                 description: request.payload.description,
+                pub: request.payload.pub,
             };
 
             const file = request.payload.image;

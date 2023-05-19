@@ -61,6 +61,7 @@ export const placemarkMongoStore = {
         placemarkDoc.analytics = updatedPlacemark.analytics;
         placemarkDoc.description = updatedPlacemark.description;
         if(updatedPlacemark.image)  {placemarkDoc.image = updatedPlacemark.image;}
+        placemarkDoc.pub = updatedPlacemark.pub;
         await placemarkDoc.save();
     },
 };
