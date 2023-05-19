@@ -15,7 +15,28 @@ export const placemarkController = {
             return h.view("placemark-view", viewData);
         },
     },
+    public: {
+        auth: false,
+        handler: async function (request, h) {
+            const placemarks = await db.placemarkStore.getPublicPlacemarks();
+            const viewData = {
+                placemarks: placemarks,
+            };
+            return h.view("public-view", viewData);
+        },
+    },
 
+    review: {
+        auth: false,
+        handler: async function (request, h) {
+            const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
+            const viewData = {
+                placemark: placemark,
+                reviews: [],
+            };
+            return h.view("placemark-review", viewData);
+        },
+    },
 
     update: {
         validate: {

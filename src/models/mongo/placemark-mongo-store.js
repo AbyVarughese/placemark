@@ -7,6 +7,10 @@ export const placemarkMongoStore = {
         const placemarks = await Placemark.find().lean();
         return placemarks;
     },
+    async getPublicPlacemarks() {
+        const placemarks = await Placemark.find({pub: true}).lean();
+        return placemarks;
+    },
     async addPlacemark(categoryId, placemark) {
         placemark.categoryid = categoryId;
         const newPlacemark = new Placemark(placemark);

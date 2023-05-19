@@ -1,0 +1,58 @@
+{{> menu}}
+
+<section class="section columns is-centered">
+    <div class="column has-text-centered">
+  <div class="title">
+    Public Placemarks
+  </div>
+
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Placemark</th>
+      <th>Location</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>Analytics</th>
+      <th>Description</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each placemarks}}
+    <tr>
+      <td>
+        {{title}}
+      </td>
+      <td>
+        {{location}}
+      </td>
+      <td>
+       {{latitude}}
+      </td>
+      <td>
+       {{longitude}}
+      </td>
+      <td>
+        {{analytics}}
+      </td>
+      <td>
+       {{description}}
+      </td>
+        <td>
+            <figure class="image is-128x128">
+                <img src={{image}}>
+            </figure>
+        </td>
+
+      <td>
+         <a href="/public/review/{{_id}}" class="ui icon button">
+            <i class="fas fa-edit"></i>
+            </a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</section>
