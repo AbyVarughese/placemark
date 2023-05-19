@@ -15,12 +15,15 @@ export const placemarkController = {
             return h.view("placemark-view", viewData);
         },
     },
+
     public: {
-        auth: false,
+        auth: { mode: "optional" },
         handler: async function (request, h) {
+            const loggedInUser = request.auth.credentials;
             const placemarks = await db.placemarkStore.getPublicPlacemarks();
             const viewData = {
                 placemarks: placemarks,
+                loggedInUser: loggedInUser,
             };
             return h.view("public-view", viewData);
         },
@@ -31,44 +34,47 @@ export const placemarkController = {
         handler: async function (request, h) {
             const loggedInUser = request.auth.credentials;
             const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
-            const reviews = await db.reviewStore.getReviewsByPlacemarkId(request.params.placemarkid)
+            const reviews = await db.reviewStore.getReviewsByPlacemarkId(request.params.placemarkid);
             const viewData = {
                 placemark: placemark,
-                reviews: [],
+                loggedInUser: loggedInUser,
+                reviews: reviews,
             };
             return h.view("placemark-review", viewData);
         },
     },
+
     addReview: {
-        validate: {
-            payload: ReviewSpec,
-            options: {abortEarly: false},
-            failAction: async function (request, h, error) {
-                const loggedInUser = request.auth.credentials;
-                const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
-                const viewData = {
-                    placemark: placemark,
-                    loggedInUser: loggedInUser,
-                    reviews: [],
-                    messageText: request.payload.message,
-                    errors: error.details,
-                };
-                return h.view("placemark-review", viewData).takeover().code(400);
-            },
+      validate: {
+        payload: ReviewSpec,
+        options: { abortEarly: false },
+        failAction: async function (request, h, error) {
+          const loggedInUser = request.auth.credentials;
+          const placemark = await db.placemarkStore.getPlacemarkById(request.params.placemarkid);
+          const viewData = {
+              placemark: placemark,
+              loggedInUser: loggedInUser,
+              reviews: [],
+              messageText: request.payload.message,
+              errors: error.details,
+          };
+          return h.view("placemark-review", viewData).takeover().code(400);
         },
-        handler: async function (request, h) {
-            const loggedInUser = request.auth.credentials;
-            const newReview = {
-                placemarkid: request.params.placemarkid,
-                userid: loggedInUser._id,
-                message: request.payload.message,
-                rating: request.payload.rating,
-                reviewDate: new Date(),
-            };
-            await db.reviewStore.addReview(newReview);
-            return h.redirect(`/public/review/${request.params.placemarkid}`);
-        },
+      },
+      handler: async function (request, h) {
+        const loggedInUser = request.auth.credentials;
+        const newReview = {
+          placemarkid: request.params.placemarkid,
+          userid: loggedInUser._id,
+          message: request.payload.message,
+          rating: request.payload.rating,
+          reviewDate: new Date(),
+        };
+        await db.reviewStore.addReview(newReview);
+        return h.redirect(`/public/review/${request.params.placemarkid}`);
+      },
     },
+  
     update: {
         validate: {
             payload: PlacemarkSpec,

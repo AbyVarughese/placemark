@@ -1,46 +1,62 @@
-{{> menu}}
-
+{{#if loggedInUser}}
+    {{> menu active="public"}}
+{{else}}
+    {{> welcome-menu active="public"}}
+{{/if}}
     <p><b>Placemark Details</b></p> </br>
-
 <!-- AddToAny BEGIN -->
 <a class="a2a_dd" href="https://www.addtoany.com/share"><img src="https://static.addtoany.com/buttons/share_save_171_16.png" width="171" height="16" border="0" alt="Share"></a>
 <script async src="https://static.addtoany.com/menu/page.js"></script>
 <!-- AddToAny END -->
+<table class="table is-fullwidth">
+    <thead>
+    <tr>
+        <th>Placemark</th>
+        <th>Location</th>
+        <th>latitude</th>
+        <th>longitude</th>
+        <th>Analytics</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+          <tr>
+            <td>
+                {{placemark.title}}
+            </td>
+            <td>
+                {{placemark.location}}
+            </td>
+            <td>
+                {{placemark.latitude}}
+            </td>
+            <td>
+                {{placemark.longitude}}
+            </td>
+            <td>
+                {{placemark.analytics}}
+            </td>
+            <td>
+                {{placemark.description}}
+            </td>
+            <td>
+                <figure class="image is-128x128">
+                    <img src={{placemark.image}}>
+                </figure>
+            </td>
+        </tr>
+       </tbody>
+</table>
 
-    <dl>
-      <dt>Title</dt>
-      <dd>{{placemark.title}}</dd>
-      <dt>Location</dt>
-      <dd>{{placemark.location}}</dd>
-      <dt>Latitude</dt>
-      <dd>{{placemark.latitude}}</dd>
-      <dt>Longitude</dt>
-      <dd>{{placemark.longitude}}</dd>
-      <dt>Analytics</dt>
-      <dd>{{placemark.analytics}}</dd>
-      <dt>Description</dt>
-      <dd>{{placemark.description}}</dd>
-      <dt>Description</dt>
-      <dd>{{placemark.description}}</dd>
-      <dt>Image</dt>
-      <dd>
-        <figure class="image is-128x128">
-          <img src={{placemark.image}}>
-        </figure>
-      </dd>
-    </dl>
-
-<div class="content">
-    <h3>Reviews:</h3>
+    <div class="content">
+      <h3>Reviews:</h3>
     {{#each reviews}}
     <blockquote>
       <p><em>{{reviewDate}}; Rating: <b>{{rating}}</b></em></p>
       {{message}}
-        <blockquote>
-            <p><em>{{reviewDate}}; Rating: <b>{{rating}}</b></em></p>
-            {{message}}
-        </blockquote>
-        <p>&nbsp;</p>
+    </blockquote>
+    <p>&nbsp;</p>
     {{/each}}
     </div>
     <p>&nbsp;</p>
@@ -51,30 +67,30 @@
     <div class="field">
       <label class="label">Message</label>
       <div class="control">
-          <textarea class="textarea" name="message" placeholder="Write your review">{{messageText}}</textarea>
+        <textarea class="textarea" name="message" placeholder="Write your review">{{messageText}}</textarea>
       </div>
     </div>
     <div></div>
     <div class="control">
       <label class="label">Rating</label>
       <label class="radio">
-          <input type="radio" name="rating" value="1">
+        <input type="radio" name="rating" value="1">
         1
       </label>
       <label class="radio">
-          <input type="radio" name="rating" value="2">
+        <input type="radio" name="rating" value="2">
         2
       </label>
       <label class="radio">
-          <input type="radio" name="rating" value="3">
+        <input type="radio" name="rating" value="3">
         3
       </label>
       <label class="radio">
-          <input type="radio" name="rating" value="4">
+        <input type="radio" name="rating" value="4">
         4
       </label>
       <label class="radio">
-          <input type="radio" name="rating" value="5">
+        <input type="radio" name="rating" value="5">
         5
       </label>
     </div>

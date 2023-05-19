@@ -1,4 +1,8 @@
-{{> menu}}
+{{#if loggedInUser}}
+    {{> menu active="public"}}
+{{else}}
+    {{> welcome-menu active="public"}}
+{{/if}}
 
 <section class="section columns is-centered">
     <div class="column has-text-centered">

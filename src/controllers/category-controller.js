@@ -13,7 +13,7 @@ export const categoryController = {
       }
       let mapview = null;
       if (placemarks.length > 0) {
-         mapview = ".setView(["+(placemarks[0].latitude||"").toString()+", "+(placemarks[0].longitude||"").toString()+"], 6.4)";
+        mapview = ".setView(["+(placemarks[0].latitude||"").toString()+", "+(placemarks[0].longitude||"").toString()+"], 6.4)";
       }
 
       const viewData = {
@@ -45,8 +45,6 @@ export const categoryController = {
         longitude: request.payload.longitude,
         analytics: Number(request.payload.analytics),
         description: request.payload.description,
-        rating: request.payload.rating,
-        pub: request.payload.pub,
 
        };
 
