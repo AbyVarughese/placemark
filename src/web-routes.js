@@ -29,6 +29,7 @@ export const webRoutes = [
 
   { method: "GET", path: "/public", config: placemarkController.public },
   { method: "GET", path: "/public/review/{placemarkid}", config: placemarkController.review },
+  { method: "POST", path: "/public/review/{placemarkid}", config: placemarkController.addReview },
 
   { method: "POST", path: "/category/{id}/uploadimage", config: categoryController.uploadImage },
 

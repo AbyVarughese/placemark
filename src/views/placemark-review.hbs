@@ -28,14 +28,17 @@
       </dd>
     </dl>
 
-    <div class="content">
-      <h3>Reviews:</h3>
+<div class="content">
+    <h3>Reviews:</h3>
     {{#each reviews}}
     <blockquote>
       <p><em>{{reviewDate}}; Rating: <b>{{rating}}</b></em></p>
       {{message}}
-    </blockquote>
-    <p>&nbsp;</p>
+        <blockquote>
+            <p><em>{{reviewDate}}; Rating: <b>{{rating}}</b></em></p>
+            {{message}}
+        </blockquote>
+        <p>&nbsp;</p>
     {{/each}}
     </div>
     <p>&nbsp;</p>
@@ -46,30 +49,30 @@
     <div class="field">
       <label class="label">Message</label>
       <div class="control">
-        <textarea class="textarea" name="message" placeholder="Write your review">{{messageText}}</textarea>
+          <textarea class="textarea" name="message" placeholder="Write your review">{{messageText}}</textarea>
       </div>
     </div>
     <div></div>
     <div class="control">
       <label class="label">Rating</label>
       <label class="radio">
-        <input type="radio" name="rating" value="1">
+          <input type="radio" name="rating" value="1">
         1
       </label>
       <label class="radio">
-        <input type="radio" name="rating" value="2">
+          <input type="radio" name="rating" value="2">
         2
       </label>
       <label class="radio">
-        <input type="radio" name="rating" value="3">
+          <input type="radio" name="rating" value="3">
         3
       </label>
       <label class="radio">
-        <input type="radio" name="rating" value="4">
+          <input type="radio" name="rating" value="4">
         4
       </label>
       <label class="radio">
-        <input type="radio" name="rating" value="5">
+          <input type="radio" name="rating" value="5">
         5
       </label>
     </div>
